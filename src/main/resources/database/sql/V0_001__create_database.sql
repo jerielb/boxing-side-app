@@ -1,0 +1,1 @@
+create database boxing_side_application;
