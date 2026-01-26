@@ -2,10 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <title>Boxing Side App</title>
 </head>
-<body>
-    <h1>HOME PAGE</h1>
-    <a href="roster.html" th:href="@{/roster}">roster</a>
+<body style="height:90vh; background-image: url('/static/background.png'); background-repeat: no-repeat; background-size: cover;">
+    <header class="mt-2 p-2">
+        <img class="mx-auto d-block" style="width:80; height:80px;" src="/static/logo.png" th:src="@{/logo.png}" alt="logo"/>
+    </header>
+    <main class="p-3" style="height:85vh;">
+        <div class="mx-auto position-absolute top-50 start-50 translate-middle" style="width: 500px;">
+            <div class="d-grid gap-1">
+                <a class="fs-3 fw-bold btn btn-outline-light" href="roster.html" th:href="@{/roster}">ROSTER</a>
+                <br><br>
+                <button class="fs-3 fw-bold btn btn-outline-light disabled" type="button">TOURNAMENT</button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
