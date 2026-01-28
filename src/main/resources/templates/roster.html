@@ -2,12 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Roster</title>
 </head>
 <body style="height:90vh; background-image: url('/static/background.png'); background-repeat: no-repeat; background-size: cover;">
@@ -16,45 +12,59 @@
             <img class="mx-auto d-block" style="width:80; height:80px;" src="/static/logo.png" th:src="@{/logo.png}" alt="logo"/>
         </a>
     </header>
-    <main class="p-3 border" style="height:85vh;">
-        <div class="text-center row h-100 border border-secondary">
-            
-            <div class="col-2 text-primary fw-bold border border-danger" style="height:100%">
-                <p class="text-light">FILTER</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="0" id="heavyweight">
-                    <label class="form-check-label" for="heavyweight">HEAVYWEIGHT</label>
+    <main class="p-3" style="height:85vh;">
+        <div class="row h-10">
+            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                Filter Weight Classes
+            </button>
+
+            <div class="offcanvas offcanvas-start text-bg-dark" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="staticBackdropLabel">Weight Classes</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-<!--                <div class="form-check">-->
-<!--                    <input class="form-check-input" type="checkbox" value="1" id="cruiserweight">-->
-<!--                    <label class="form-check-label" for="cruiserweight">CRUISERWEIGHT</label>-->
-<!--                </div>-->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="2" id="light_heavyweight">
-                    <label class="form-check-label" for="light_heavyweight">LIGHT HEAVYWEIGHT</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="3" id="middleweight">
-                    <label class="form-check-label" for="middleweight">MIDDLEWEIGHT</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="4" id="welterweight">
-                    <label class="form-check-label" for="welterweight">WELTERWEIGHT</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="5" id="lightweight">
-                    <label class="form-check-label" for="lightweight">LIGHTWEIGHT</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="6" id="featherweight">
-                    <label class="form-check-label" for="featherweight">FEATHERWEIGHT</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="7" id="bantamweight">
-                    <label class="form-check-label" for="bantamweight">BANTAMWEIGHT</label>
+                <div class="offcanvas-body">
+                    <form>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="0" id="heavyweight" checked>
+                            <label class="form-check-label" for="heavyweight">Heavyweight</label>
+                        </div>
+                        <!--                <div class="form-check">-->
+                        <!--                    <input class="form-check-input" type="checkbox" value="1" id="cruiserweight" checked>-->
+                        <!--                    <label class="form-check-label" for="cruiserweight">CRUISERWEIGHT</label>-->
+                        <!--                </div>-->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="2" id="light_heavyweight" checked>
+                            <label class="form-check-label" for="light_heavyweight">Light Heavyweight</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="3" id="middleweight" checked>
+                            <label class="form-check-label" for="middleweight">Middleweight</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="4" id="welterweight" checked>
+                            <label class="form-check-label" for="welterweight">Welterweight</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="5" id="lightweight" checked>
+                            <label class="form-check-label" for="lightweight">Lightweight</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="6" id="featherweight" checked>
+                            <label class="form-check-label" for="featherweight">Featherweight</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="7" id="bantamweight" checked>
+                            <label class="form-check-label" for="bantamweight">Bantamweight</label>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-secondary">Filter</button>
+                    </form>
                 </div>
             </div>
-            
+        </div>
+        
+        <div class="text-center row h-90 pt-3">
             <div class="col">
                 <div class="row text-warning border border-success" style="height:250px;">
                     <div class="col border">col</div>
@@ -71,51 +81,6 @@
                     <div class="col border">col</div>
                 </div>
             </div>
-
-<!--                <div class="row border border-danger">-->
-<!--                    <ul class="row fw-bold">-->
-<!--                        <li class="col">-->
-<!--                            <a class="" href="#">HEAVYWEIGHT</a>-->
-<!--                        </li>-->
-<!--                        <li class="col">-->
-<!--                            <a class="" href="#">LIGHT HEAVYWEIGHT</a>-->
-<!--                        </li>-->
-<!--                        <li class="col">-->
-<!--                            <a class="" href="#">MIDDLEWEIGHT</a>-->
-<!--                        </li>-->
-<!--                        <li class="col">-->
-<!--                            <a class="" href="#">WELTERWEIGHT</a>-->
-<!--                        </li>-->
-<!--                        <li class="col">-->
-<!--                            <a class="" href="#">LIGHTWEIGHT</a>-->
-<!--                        </li>-->
-<!--                        <li class="col">-->
-<!--                            <a class="" href="#">FEATHERWEIGHT</a>-->
-<!--                        </li>-->
-<!--                        <li class="col">-->
-<!--                            <a class="" href="#">BANTAMWEIGHT</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-            
-            
-<!--                <div class="row text-warning border border-success" style="height:250px;">-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                </div>-->
-<!--                -->
-<!--                <div class="row text-warning border border-success" style="height:250px;">-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                    <div class="col border">col</div>-->
-<!--                </div>-->
-                
-                
         </div>
     </main>
 </body>
