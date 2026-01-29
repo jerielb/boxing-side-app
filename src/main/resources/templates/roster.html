@@ -6,7 +6,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Roster</title>
 </head>
-<body style="height:90vh; background-image: url('/static/background.png'); background-repeat: no-repeat; background-size: cover;">
+<body style="height:90vh; background-image: url('/static/background.png'); background-repeat: no-repeat; background-size: cover;"
+      th:style="'background:url(' + @{/background.png} + '); background-repeat: no-repeat; background-size: cover;'">
     <header class="mt-2 p-2">
         <a href="index.html" th:href="@{/index}">
             <img class="mx-auto d-block" style="width:80; height:80px;" src="/static/logo.png" th:src="@{/logo.png}" alt="logo"/>
@@ -26,35 +27,35 @@
                 <div class="offcanvas-body">
                     <form>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="0" id="heavyweight" checked>
+                            <input class="form-check-input" type="checkbox" value="0" id="heavyweight">
                             <label class="form-check-label" for="heavyweight">Heavyweight</label>
                         </div>
                         <!--                <div class="form-check">-->
-                        <!--                    <input class="form-check-input" type="checkbox" value="1" id="cruiserweight" checked>-->
+                        <!--                    <input class="form-check-input" type="checkbox" value="1" id="cruiserweight">-->
                         <!--                    <label class="form-check-label" for="cruiserweight">CRUISERWEIGHT</label>-->
                         <!--                </div>-->
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="2" id="light_heavyweight" checked>
+                            <input class="form-check-input" type="checkbox" value="2" id="light_heavyweight">
                             <label class="form-check-label" for="light_heavyweight">Light Heavyweight</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="3" id="middleweight" checked>
+                            <input class="form-check-input" type="checkbox" value="3" id="middleweight">
                             <label class="form-check-label" for="middleweight">Middleweight</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="4" id="welterweight" checked>
+                            <input class="form-check-input" type="checkbox" value="4" id="welterweight">
                             <label class="form-check-label" for="welterweight">Welterweight</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="5" id="lightweight" checked>
+                            <input class="form-check-input" type="checkbox" value="5" id="lightweight">
                             <label class="form-check-label" for="lightweight">Lightweight</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="6" id="featherweight" checked>
+                            <input class="form-check-input" type="checkbox" value="6" id="featherweight">
                             <label class="form-check-label" for="featherweight">Featherweight</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="7" id="bantamweight" checked>
+                            <input class="form-check-input" type="checkbox" value="7" id="bantamweight">
                             <label class="form-check-label" for="bantamweight">Bantamweight</label>
                         </div>
                         <br>
