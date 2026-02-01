@@ -19,6 +19,19 @@ public class Boxer {
 	
 	public Boxer() {}
 	
+	public Boxer(long boxerId) {
+		this.boxerId = boxerId;
+		this.boxerFirstName = "";
+		this.boxerLastName = "";
+		this.weightclass = "";
+		this.rating = 0;
+		this.height = "";
+		this.weight = "";
+		this.fnc = "";
+		this.fnf = "";
+		this.active = "";
+	}
+	
 	public long getBoxerId() {
 		return boxerId;
 	}

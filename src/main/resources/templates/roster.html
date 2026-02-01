@@ -14,86 +14,72 @@
         </a>
     </header>
     <main class="p-3" style="height:85vh;">
-<!--        <div class="row h-10">-->
-<!--            <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">-->
-<!--                Filter Weight Classes-->
-<!--            </button>-->
-
-<!--            <div class="offcanvas offcanvas-start text-bg-dark" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">-->
-<!--                <div class="offcanvas-header">-->
-<!--                    <h5 class="offcanvas-title" id="staticBackdropLabel">Weight Classes</h5>-->
-<!--                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>-->
-<!--                </div>-->
-<!--                <div class="offcanvas-body">-->
-<!--                    <form>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="0" id="heavyweight">-->
-<!--                            <label class="form-check-label" for="heavyweight">Heavyweight</label>-->
-<!--                        </div>-->
-<!--                        &lt;!&ndash;                <div class="form-check">&ndash;&gt;-->
-<!--                        &lt;!&ndash;                    <input class="form-check-input" type="checkbox" value="1" id="cruiserweight">&ndash;&gt;-->
-<!--                        &lt;!&ndash;                    <label class="form-check-label" for="cruiserweight">CRUISERWEIGHT</label>&ndash;&gt;-->
-<!--                        &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="2" id="light_heavyweight">-->
-<!--                            <label class="form-check-label" for="light_heavyweight">Light Heavyweight</label>-->
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="3" id="middleweight">-->
-<!--                            <label class="form-check-label" for="middleweight">Middleweight</label>-->
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="4" id="welterweight">-->
-<!--                            <label class="form-check-label" for="welterweight">Welterweight</label>-->
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="5" id="lightweight">-->
-<!--                            <label class="form-check-label" for="lightweight">Lightweight</label>-->
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="6" id="featherweight">-->
-<!--                            <label class="form-check-label" for="featherweight">Featherweight</label>-->
-<!--                        </div>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="7" id="bantamweight">-->
-<!--                            <label class="form-check-label" for="bantamweight">Bantamweight</label>-->
-<!--                        </div>-->
-<!--                        <br>-->
-<!--                        <button type="submit" class="btn btn-secondary">Filter</button>-->
-<!--                    </form>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
         
         <div class="text-center row h-90 pt-3">
             <div id="carouselRosterDisplay" class="carousel slide">
                 <div class="carousel-inner">
-                    <div th:each="displayPage : ${displayPages}">
-                        <div class="carousel-item active">
+                    <div th:each="displayPage, stat : ${displayPages}">
+                        <div class="carousel-item active" th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
                                             <div class="row text-warning" style="height:250px;">
                                                 <div class="col spacer"></div>
-                                                <div class="col border">boxer_1a</div>
-                                                <div class="col border">boxer_2a</div>
-                                                <div class="col border">boxer_3a</div>
-                                                <div class="col border">boxer_4a</div>
-                                                <div class="col border">boxer_5a</div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[0].boxerFirstName}">first</span>
+                                                    <span th:text="${displayPage[0].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[1].boxerFirstName}">second</span>
+                                                    <span th:text="${displayPage[1].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[2].boxerFirstName}">third</span>
+                                                    <span th:text="${displayPage[2].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[3].boxerFirstName}">fourth</span>
+                                                    <span th:text="${displayPage[3].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[4].boxerFirstName}">fifth</span>
+                                                    <span th:text="${displayPage[4].boxerLastName}">boxer</span>
+                                                </div>
                                                 <div class="col spacer"></div>
                                             </div>
                                             <div class="row text-warning" style="height:250px;">
                                                 <div class="col spacer"></div>
-                                                <div class="col border">boxer_6a</div>
-                                                <div class="col border">boxer_7a</div>
-                                                <div class="col border">boxer_8a</div>
-                                                <div class="col border">boxer_9a</div>
-                                                <div class="col border">boxer_10a</div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[5].boxerFirstName}">sixth</span>
+                                                    <span th:text="${displayPage[5].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[6].boxerFirstName}">seventh</span>
+                                                    <span th:text="${displayPage[6].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[7].boxerFirstName}">eighth</span>
+                                                    <span th:text="${displayPage[7].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[8].boxerFirstName}">ninth</span>
+                                                    <span th:text="${displayPage[8].boxerLastName}">boxer</span>
+                                                </div>
+                                                <div class="col border">
+                                                    <span th:text="${displayPage[9].boxerFirstName}">tenth</span>
+                                                    <span th:text="${displayPage[9].boxerLastName}">boxer</span>
+                                                </div>
                                                 <div class="col spacer"></div>
                                             </div><br><br>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselRosterDisplay" data-bs-slide-to="0" class="active"></button>
-                </div>
+                
+                
+                <ol class="carousel-indicators">
+                    <li th:each="displayPage, stat : ${displayPages}">
+                        <button type="button" data-bs-target="#carouselRosterDisplay" data-bs-slide-to="0" class="active"
+                            th:data-bs-slide-to="${stat.index}" th:class="${stat.first} ? 'active' : ''"></button>
+                    </li>
+                </ol>
+                
                 
                 <div th:if="${#lists.size(displayPages) > 1}">
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselRosterDisplay" data-bs-slide="prev" style="width:100px">

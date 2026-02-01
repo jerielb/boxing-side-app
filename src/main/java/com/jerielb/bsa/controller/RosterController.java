@@ -47,6 +47,10 @@ public class RosterController {
 				displayPage = new ArrayList<>();
 			}
 		}
+		while (displayPage.size() < 10) {
+			Boxer dummy = new Boxer(9999);
+			displayPage.add(dummy);
+		}
 		displayPages.add(displayPage);
 		
 		model.addAttribute("displayPages", displayPages);
