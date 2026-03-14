@@ -36,6 +36,7 @@ public class RosterController {
 		int fullCount = boxers.size()/10;
 		System.out.println("DEBUG - fullCount: " + boxers.size() + "/10" + fullCount);
 		
+		// displayPage - is for the ROSTER page limit of 8 boxers per slide
 		List<Boxer> displayPage = new ArrayList<>();
 		List<List<Boxer>> displayPages = new ArrayList<>();
 		int max = 10;

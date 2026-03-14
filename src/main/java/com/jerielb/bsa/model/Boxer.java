@@ -16,6 +16,7 @@ public class Boxer {
 	private String fnc;
 	private String fnf;
 	private String active;
+	private String image;
 	
 	public Boxer() {}
 	
@@ -110,6 +111,14 @@ public class Boxer {
 	
 	public void setActive(String active) {
 		this.active = active;
+	}
+	
+	public String getImage() {
+		return image;
+	}
+	
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 	@Override
