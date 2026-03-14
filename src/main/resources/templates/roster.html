@@ -14,60 +14,59 @@
         </a>
     </header>
     <main class="p-3" style="height:85vh;">
-        
         <div class="text-center row h-90 pt-3">
             <div id="carouselRosterDisplay" class="carousel slide">
                 <div class="carousel-inner">
                     <div th:each="displayPage, stat : ${displayPages}">
                         <div class="carousel-item active" th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
-                                            <div class="row text-warning" style="height:250px;">
-                                                <div class="col spacer"></div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[0].boxerFirstName}">first</span>
-                                                    <span th:text="${displayPage[0].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[1].boxerFirstName}">second</span>
-                                                    <span th:text="${displayPage[1].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[2].boxerFirstName}">third</span>
-                                                    <span th:text="${displayPage[2].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[3].boxerFirstName}">fourth</span>
-                                                    <span th:text="${displayPage[3].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[4].boxerFirstName}">fifth</span>
-                                                    <span th:text="${displayPage[4].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col spacer"></div>
-                                            </div>
-                                            <div class="row text-warning" style="height:250px;">
-                                                <div class="col spacer"></div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[5].boxerFirstName}">sixth</span>
-                                                    <span th:text="${displayPage[5].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[6].boxerFirstName}">seventh</span>
-                                                    <span th:text="${displayPage[6].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[7].boxerFirstName}">eighth</span>
-                                                    <span th:text="${displayPage[7].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[8].boxerFirstName}">ninth</span>
-                                                    <span th:text="${displayPage[8].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col border">
-                                                    <span th:text="${displayPage[9].boxerFirstName}">tenth</span>
-                                                    <span th:text="${displayPage[9].boxerLastName}">boxer</span>
-                                                </div>
-                                                <div class="col spacer"></div>
-                                            </div><br><br>
+                            <div class="row text-warning" style="height:250px;">
+                                <div class="col spacer"></div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[0].boxerFirstName}">first</span>
+                                    <span th:text="${displayPage[0].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[1].boxerFirstName}">second</span>
+                                    <span th:text="${displayPage[1].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[2].boxerFirstName}">third</span>
+                                    <span th:text="${displayPage[2].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[3].boxerFirstName}">fourth</span>
+                                    <span th:text="${displayPage[3].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[4].boxerFirstName}">fifth</span>
+                                    <span th:text="${displayPage[4].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col spacer"></div>
+                            </div>
+                            <div class="row text-warning" style="height:250px;">
+                                <div class="col spacer"></div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[5].boxerFirstName}">sixth</span>
+                                    <span th:text="${displayPage[5].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[6].boxerFirstName}">seventh</span>
+                                    <span th:text="${displayPage[6].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[7].boxerFirstName}">eighth</span>
+                                    <span th:text="${displayPage[7].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[8].boxerFirstName}">ninth</span>
+                                    <span th:text="${displayPage[8].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col border">
+                                    <span th:text="${displayPage[9].boxerFirstName}">tenth</span>
+                                    <span th:text="${displayPage[9].boxerLastName}">boxer</span>
+                                </div>
+                                <div class="col spacer"></div>
+                            </div><br><br>
                         </div>
                     </div>
                 </div>
