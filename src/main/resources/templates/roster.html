@@ -19,51 +19,111 @@
                 <div class="carousel-inner">
                     <div th:each="displayPage, stat : ${displayPages}">
                         <div class="carousel-item active" th:class="${stat.first} ? 'carousel-item active' : 'carousel-item'">
-                            <div class="row text-warning" style="height:250px;">
+                            <div class="row text-white" style="height:250px;">
                                 <div class="col spacer"></div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[0].boxerFirstName}">first</span>
-                                    <span th:text="${displayPage[0].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[0].boxerFirstName}">first</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[0].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png" 
+                                         th:src="@{'/boxer/' + ${displayPage[0].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[0].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[0].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[0].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[0].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[1].boxerFirstName}">second</span>
-                                    <span th:text="${displayPage[1].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[1].boxerFirstName}">second</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[1].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[1].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[1].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[1].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[1].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[1].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[2].boxerFirstName}">third</span>
-                                    <span th:text="${displayPage[2].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[2].boxerFirstName}">third</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[2].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[2].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[2].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[2].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[2].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[2].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[3].boxerFirstName}">fourth</span>
-                                    <span th:text="${displayPage[3].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[3].boxerFirstName}">fourth</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[3].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[3].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[3].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[3].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[3].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[3].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[4].boxerFirstName}">fifth</span>
-                                    <span th:text="${displayPage[4].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[4].boxerFirstName}">fifth</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[4].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[4].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[4].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[4].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[4].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[4].active}">active</span>
                                 </div>
                                 <div class="col spacer"></div>
                             </div>
-                            <div class="row text-warning" style="height:250px;">
+                            <div class="row text-white" style="height:250px;">
                                 <div class="col spacer"></div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[5].boxerFirstName}">sixth</span>
-                                    <span th:text="${displayPage[5].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[5].boxerFirstName}">sixth</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[5].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[5].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[5].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[5].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[5].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[5].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[6].boxerFirstName}">seventh</span>
-                                    <span th:text="${displayPage[6].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[6].boxerFirstName}">seventh</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[6].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[6].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[6].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[6].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[6].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[6].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[7].boxerFirstName}">eighth</span>
-                                    <span th:text="${displayPage[7].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[7].boxerFirstName}">eighth</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[7].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[7].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[7].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[7].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[7].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[7].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[8].boxerFirstName}">ninth</span>
-                                    <span th:text="${displayPage[8].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[8].boxerFirstName}">ninth</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[8].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[8].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[8].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[8].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[8].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[8].active}">active</span>
                                 </div>
                                 <div class="col border">
-                                    <span th:text="${displayPage[9].boxerFirstName}">tenth</span>
-                                    <span th:text="${displayPage[9].boxerLastName}">boxer</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[9].boxerFirstName}">tenth</span>
+                                    <span class="text-white fw-bold" th:text="${displayPage[9].boxerLastName}">boxer</span>
+                                    <img class="mx-auto d-block" style="width:150; height:100px;" src="/static/boxer/_default_avatar.png"
+                                         th:src="@{'/boxer/' + ${displayPage[9].image} + '.png'}" alt=""/>
+                                    <span class="fw-bold text-danger">WC: </span><span th:text="${displayPage[9].weightclass}">weightclass</span><br>
+                                    <span class="fw-bold text-danger">Height: </span><span th:text="${displayPage[9].height}">height</span><br>
+                                    <span class="fw-bold text-danger">Weight: </span><span th:text="${displayPage[9].weight}">weight</span><br>
+                                    <span class="fw-bold text-danger">In-Game: </span><span th:text="${displayPage[9].active}">active</span>
                                 </div>
                                 <div class="col spacer"></div>
                             </div><br><br>
