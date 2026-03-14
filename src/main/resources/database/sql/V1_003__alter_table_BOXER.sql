@@ -1,2 +1,2 @@
 alter table BOXER
-add IMAGE varchar(100)
+add column USERNAME varchar(100)
