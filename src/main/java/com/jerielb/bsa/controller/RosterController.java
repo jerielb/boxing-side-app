@@ -1,12 +1,14 @@
 package com.jerielb.bsa.controller;
 
 import com.jerielb.bsa.model.Boxer;
+import com.jerielb.bsa.model.RosterForm;
 import com.jerielb.bsa.service.RosterService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,18 +25,41 @@ public class RosterController {
 		this.ROSTER_SERVICE = ROSTER_SERVICE;
 	}
 	
-	@RequestMapping(path="/index", method= RequestMethod.GET)
-	public String getHomePage() {
-		LOGGER.info("Redirecting to Home page");
-		return "redirect:/";
+	@RequestMapping(path="/roster_options", method= RequestMethod.GET)
+	public String getRosterPage(Model model) {
+		model.addAttribute("rosterForm", new RosterForm());
+		return "roster_options";
 	}
 	
-	@RequestMapping(path="/roster", method= RequestMethod.GET)
-	public String getRosterPage(Model model) {
-		List<Boxer> boxers = ROSTER_SERVICE.getAllBoxers();
+	@RequestMapping(path="/roster", method= RequestMethod.POST)
+	public String getRosterPage(@ModelAttribute("rosterForm") RosterForm form, Model model) {		
+		List<Boxer> roster = switch (form.getVersion()) {
+			case 1 ->
+				// Fight Night Champion roster
+					ROSTER_SERVICE.getFNCRoster();
+			case 2 ->
+				// Fight Night Forever roster
+					ROSTER_SERVICE.getFNFRoster();
+			case 3 ->
+				// Custom roster
+					ROSTER_SERVICE.getCustomRoster();
+			default ->
+				// All boxers
+					ROSTER_SERVICE.getAllBoxers();
+		};
 		
-		int fullCount = boxers.size()/10;
-		System.out.println("DEBUG - fullCount: " + boxers.size() + "/10" + fullCount);
+		// FILTER for weight classes (if selected)
+		List <Boxer> boxers = new ArrayList<>();
+		if (!form.getWeightClasses().isEmpty()) {
+			LOGGER.info("Filtering roster for selected weight classes");
+			for (Boxer boxer : roster) {
+				if (form.getWeightClasses().contains(boxer.getWeightclass())) {
+					boxers.add(boxer);
+				}
+			}
+		} else {
+			boxers = roster;
+		}
 		
 		// displayPage - is for the ROSTER page limit of 8 boxers per slide
 		List<Boxer> displayPage = new ArrayList<>();
