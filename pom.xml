@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.jerielb</groupId>
 	<artifactId>bsa</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>Boxing Side App</name>
 	<description>A side application for boxing games</description>
 	<url/>
