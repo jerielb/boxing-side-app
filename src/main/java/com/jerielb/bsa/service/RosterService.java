@@ -24,4 +24,22 @@ public class RosterService {
 		LOGGER.info("Getting all boxers from BOXER table");
 		return boxers;
 	}
+	
+	public List<Boxer> getFNCRoster() {
+		List<Boxer> boxers = BOXER_REPOSITORY.findFNCRoster();
+		LOGGER.info("Getting FNC boxers from BOXER table");
+		return boxers;
+	}
+	
+	public List<Boxer> getFNFRoster() {
+		List<Boxer> boxers = BOXER_REPOSITORY.findFNFRoster();
+		LOGGER.info("Getting FNF boxers from BOXER table");
+		return boxers;
+	}
+	
+	public List<Boxer> getCustomRoster() {
+		List<Boxer> boxers = BOXER_REPOSITORY.findCustomRoster();
+		LOGGER.info("Getting Custom roster boxers from BOXER table");
+		return boxers;
+	}
 }

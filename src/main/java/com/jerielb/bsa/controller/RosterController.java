@@ -1,6 +1,7 @@
 package com.jerielb.bsa.controller;
 
 import com.jerielb.bsa.model.Boxer;
+import com.jerielb.bsa.model.RosterForm;
 import com.jerielb.bsa.service.RosterService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +25,28 @@ public class RosterController {
 		this.ROSTER_SERVICE = ROSTER_SERVICE;
 	}
 	
-	@RequestMapping(path="/roster", method= RequestMethod.GET)
+	@RequestMapping(path="/roster_options", method= RequestMethod.GET)
 	public String getRosterPage(Model model) {
-		List<Boxer> boxers = ROSTER_SERVICE.getAllBoxers();
+		model.addAttribute("rosterForm", new RosterForm());
+		return "roster_options";
+	}
+	
+	@RequestMapping(path="/roster", method= RequestMethod.POST)
+	public String getRosterPage(@RequestParam int version, Model model) {
+		List<Boxer> boxers = switch (version) {
+			case 1 ->
+				// Fight Night Champion roster
+					ROSTER_SERVICE.getFNCRoster();
+			case 2 ->
+				// Fight Night Forever roster
+					ROSTER_SERVICE.getFNFRoster();
+			case 3 ->
+				// Custom roster
+					ROSTER_SERVICE.getCustomRoster();
+			default ->
+				// All boxers
+					ROSTER_SERVICE.getAllBoxers();
+		};
 		
 		int fullCount = boxers.size()/10;
 		System.out.println("DEBUG - fullCount: " + boxers.size() + "/10" + fullCount);
