@@ -18,54 +18,8 @@
         <div class="mx-auto position-absolute top-50 start-50 translate-middle" style="width: 500px;">
             <div class="d-grid gap-1">
                 <form method="post" action="roster.html" th:action="@{/roster}" th:object="${rosterForm}">
-                    <!-- 1. Switch for Weight Class selection -->
-                    <div class="form-check form-switch mb-3">
-                        <input class="form-check-input" type="checkbox" id="enableSectionSwitch">
-                        <label class="form-check-label text-white fw-bold" for="enableSectionSwitch">Select Weight Classes</label>
-                        <button type="button" style="border:none; background:none;"
-                                data-toggle="popover" data-trigger="hover" data-placement="top" title="disabled selects all weights">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-info-circle" viewBox="0 0 16 16">
-                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- 2. Weight Class selection to Enable/Disable -->
-                    <fieldset id="weightclassSelection" disabled>
-                        <div class="mb-3 text-white">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Heavyweight" id="Heavyweight">
-                                <label class="form-check-label" for="Heavyweight">Heavyweight</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Light-Heavyweight" id="Light-Heavyweight">
-                                <label class="form-check-label" for="Light-Heavyweight">Light Heavyweight</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Middleweight" id="Middleweight">
-                                <label class="form-check-label" for="Middleweight">Middleweight</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Welterweight" id="Welterweight">
-                                <label class="form-check-label" for="Welterweight">Welterweight</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Lightweight" id="Lightweight">
-                                <label class="form-check-label" for="Lightweight">Lightweight</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Featherweight" id="Featherweight">
-                                <label class="form-check-label" for="Featherweight">Featherweight</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Bantamweight" id="Bantamweight">
-                                <label class="form-check-label" for="Bantamweight">Bantamweight</label>
-                            </div>
-                        </div>
-                    </fieldset>
-                    <br>
                     <div class="text-white fw-bold">Select Boxers from a version</div>
-                    <fieldset class="text-white">
+                    <fieldset id="roster-selection" class="text-white">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" th:field="*{version}" value="0" id="allBoxers" checked>
                             <label class="form-check-label" for="allBoxers">
@@ -92,6 +46,49 @@
                         </div>
                     </fieldset>
                     <br>
+                    
+                    <fieldset id="weightclass-selection">
+                        <span class="form-check-label text-white fw-bold">Select Weight Classes</span>
+                        <button type="button" style="border:none; background:none;"
+                                data-toggle="popover" data-trigger="hover" data-placement="top" title="blank will default to all weight classes">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                            </svg>
+                        </button>
+                        <div class="mb-3 text-white">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="heavyweight" id="Heavyweight" th:field="*{weightClasses}">
+                                <label class="form-check-label" for="Heavyweight">Heavyweight</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="light-heavyweight" id="Light-Heavyweight" th:field="*{weightClasses}">
+                                <label class="form-check-label" for="Light-Heavyweight">Light Heavyweight</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="middleweight" id="Middleweight" th:field="*{weightClasses}">
+                                <label class="form-check-label" for="Middleweight">Middleweight</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="welterweight" id="Welterweight" th:field="*{weightClasses}">
+                                <label class="form-check-label" for="Welterweight">Welterweight</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="lightweight" id="Lightweight" th:field="*{weightClasses}">
+                                <label class="form-check-label" for="Lightweight">Lightweight</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="featherweight" id="Featherweight" th:field="*{weightClasses}">
+                                <label class="form-check-label" for="Featherweight">Featherweight</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="bantamweight" id="Bantamweight" th:field="*{weightClasses}">
+                                <label class="form-check-label" for="Bantamweight">Bantamweight</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <br>
+                    
                     <input type="submit" value="Continue" class="btn btn-outline-light">
                 </form>
             </div>
@@ -100,14 +97,6 @@
 </body>
 
 <script>
-    const switchElement = document.getElementById('enableSectionSwitch');
-    const section = document.getElementById('weightclassSelection');
-  
-    switchElement.addEventListener('change', function() {
-      // If checked, remove 'disabled' to enable; otherwise, add it.
-      section.disabled = !this.checked;
-    });
-
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
       return new bootstrap.Popover(popoverTriggerEl, {

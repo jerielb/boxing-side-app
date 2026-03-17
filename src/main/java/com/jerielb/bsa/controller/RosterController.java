@@ -8,9 +8,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +32,8 @@ public class RosterController {
 	}
 	
 	@RequestMapping(path="/roster", method= RequestMethod.POST)
-	public String getRosterPage(@RequestParam int version, Model model) {
-		List<Boxer> boxers = switch (version) {
+	public String getRosterPage(@ModelAttribute("rosterForm") RosterForm form, Model model) {		
+		List<Boxer> roster = switch (form.getVersion()) {
 			case 1 ->
 				// Fight Night Champion roster
 					ROSTER_SERVICE.getFNCRoster();
@@ -48,8 +48,18 @@ public class RosterController {
 					ROSTER_SERVICE.getAllBoxers();
 		};
 		
-		int fullCount = boxers.size()/10;
-		System.out.println("DEBUG - fullCount: " + boxers.size() + "/10" + fullCount);
+		// FILTER for weight classes (if selected)
+		List <Boxer> boxers = new ArrayList<>();
+		if (!form.getWeightClasses().isEmpty()) {
+			LOGGER.info("Filtering roster for selected weight classes");
+			for (Boxer boxer : roster) {
+				if (form.getWeightClasses().contains(boxer.getWeightclass())) {
+					boxers.add(boxer);
+				}
+			}
+		} else {
+			boxers = roster;
+		}
 		
 		// displayPage - is for the ROSTER page limit of 8 boxers per slide
 		List<Boxer> displayPage = new ArrayList<>();
