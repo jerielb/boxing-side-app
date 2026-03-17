@@ -26,7 +26,7 @@ public class RosterController {
 	}
 	
 	@RequestMapping(path="/roster_options", method= RequestMethod.GET)
-	public String getRosterPage(Model model) {
+	public String getRosterOptionsPage(Model model) {
 		model.addAttribute("rosterForm", new RosterForm());
 		return "roster_options";
 	}
