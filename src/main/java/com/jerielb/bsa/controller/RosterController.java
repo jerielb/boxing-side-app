@@ -23,12 +23,6 @@ public class RosterController {
 		this.ROSTER_SERVICE = ROSTER_SERVICE;
 	}
 	
-	@RequestMapping(path="/index", method= RequestMethod.GET)
-	public String getHomePage() {
-		LOGGER.info("Redirecting to Home page");
-		return "redirect:/";
-	}
-	
 	@RequestMapping(path="/roster", method= RequestMethod.GET)
 	public String getRosterPage(Model model) {
 		List<Boxer> boxers = ROSTER_SERVICE.getAllBoxers();
