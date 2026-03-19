@@ -19,4 +19,7 @@ public interface BoxerRepository extends JpaRepository<Boxer, Long> {
 	
 	@Query(value = "select * from BOXER where ACTIVE = 'Y'", nativeQuery = true)
 	List<Boxer> findCustomRoster();
+	
+	@Query(value = "select * from BOXER where ACTIVE = 'Y' and WEIGHTCLASS = ?1", nativeQuery = true)
+	List<Boxer> findWeightClassBoxers(String weightclass);
 }

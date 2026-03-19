@@ -42,4 +42,10 @@ public class RosterService {
 		LOGGER.info("Getting Custom roster boxers from BOXER table");
 		return boxers;
 	}
+	
+	public List<Boxer> getWeightClassBoxers(String weight) {
+		List<Boxer> boxers = BOXER_REPOSITORY.findWeightClassBoxers(weight);
+		LOGGER.info("Getting Custom roster boxers from BOXER table");
+		return boxers;
+	}
 }
