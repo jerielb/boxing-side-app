@@ -3,7 +3,7 @@ package com.jerielb.bsa.model;
 import java.util.List;
 
 public class TournamentForm {
-	private String weightClass;
+	private String weightClass = "heavyweight";
 	private Boxer boxer;
 	List<Boxer> opponents;
 	
