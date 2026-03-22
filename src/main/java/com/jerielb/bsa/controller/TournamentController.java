@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,53 +26,47 @@ public class TournamentController {
 	}
 	
 	@RequestMapping(path="/tournament_select_weight", method= RequestMethod.GET)
-	public String getTournamentPage(Model model) {
+	public String getTournamentWeightSelectionPage(Model model) {
 		model.addAttribute("tournamentForm", new TournamentForm());
 		return "tournament_select_weight";
 	}
 	
 	@RequestMapping(path="/tournament_select_boxer", method= RequestMethod.POST)
-	public String getRosterPage(@ModelAttribute("tournamentForm") TournamentForm form, Model model) {
-		System.out.println("\nDEBUG - weight class: " + form.getWeightClass());
+	public String getTournamentBoxerSelectionPage(@ModelAttribute("tournamentForm") TournamentForm form, Model model) {
+		System.out.println("DEBUG - weight class: " + form.getWeightClass());
 		List<Boxer> roster = ROSTER_SERVICE.getWeightClassBoxers(form.getWeightClass());
 		roster.forEach(System.out::println);
+
+		// displayPage - is for the ROSTER page limit of 8 boxers per slide
+		List<Boxer> displayPage = new ArrayList<>();
+		List<List<Boxer>> displayPages = new ArrayList<>();
+		int max = 10;
+		for (Boxer boxer : roster) {
+			displayPage.add(boxer);
+
+			if (displayPage.size() == max) {
+				displayPages.add(displayPage);
+				displayPage = new ArrayList<>();
+			}
+		}
+		if (!displayPage.isEmpty()) {
+			while (displayPage.size() < 10) {
+				Boxer dummy = new Boxer(9999);
+				displayPage.add(dummy);
+			}
+			displayPages.add(displayPage);
+		}
+
+		model.addAttribute("displayPages", displayPages);
+		model.addAttribute("tournamentForm", form);
 		
-//		// FILTER for weight classes (if selected)
-//		List <Boxer> boxers = new ArrayList<>();
-//		if (!form.getWeightClasses().isEmpty()) {
-//			LOGGER.info("Filtering roster for selected weight classes");
-//			for (Boxer boxer : roster) {
-//				if (form.getWeightClasses().contains(boxer.getWeightclass())) {
-//					boxers.add(boxer);
-//				}
-//			}
-//		} else {
-//			boxers = roster;
-//		}
-//		
-//		// displayPage - is for the ROSTER page limit of 8 boxers per slide
-//		List<Boxer> displayPage = new ArrayList<>();
-//		List<List<Boxer>> displayPages = new ArrayList<>();
-//		int max = 10;
-//		for (Boxer boxer : boxers) {
-//			displayPage.add(boxer);
-//			
-//			if (displayPage.size() == max) {
-//				displayPages.add(displayPage);
-//				displayPage = new ArrayList<>();
-//			}
-//		}
-//		if (!displayPage.isEmpty()) {
-//			while (displayPage.size() < 10) {
-//				Boxer dummy = new Boxer(9999);
-//				displayPage.add(dummy);
-//			}
-//			displayPages.add(displayPage);
-//		}
-//		
-//		model.addAttribute("displayPages", displayPages);
+		return "tournament_select_boxer";
+	}
+	
+	@RequestMapping(path="/tournament", method= RequestMethod.POST)
+	public String getTournamentPage(@ModelAttribute("tournamentForm") TournamentForm form, Model model) {
+		System.out.println("\n\tDEBUG - boxer selected: " + form.getBoxer());
 		
-		LOGGER.info("Redirecting to Tournament page");
 		return "tournament";
 	}
 }
