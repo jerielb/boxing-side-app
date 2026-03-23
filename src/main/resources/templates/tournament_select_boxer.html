@@ -46,7 +46,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[1].boxerId != 9999}">Height: </span><span th:text="${displayPage[1].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[1].boxerId != 9999}">Weight: </span><span th:text="${displayPage[1].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[1].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[1].boxerId}" selected>only</option>
                                             </select>
@@ -62,7 +62,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[2].boxerId != 9999}">Height: </span><span th:text="${displayPage[2].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[2].boxerId != 9999}">Weight: </span><span th:text="${displayPage[2].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[2].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[2].boxerId}" selected>only</option>
                                             </select>
@@ -78,7 +78,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[3].boxerId != 9999}">Height: </span><span th:text="${displayPage[3].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[3].boxerId != 9999}">Weight: </span><span th:text="${displayPage[3].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[3].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[3].boxerId}" selected>only</option>
                                             </select>
@@ -94,7 +94,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[4].boxerId != 9999}">Height: </span><span th:text="${displayPage[4].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[4].boxerId != 9999}">Weight: </span><span th:text="${displayPage[4].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[4].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[4].boxerId}" selected>only</option>
                                             </select>
@@ -114,7 +114,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[5].boxerId != 9999}">Height: </span><span th:text="${displayPage[5].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[5].boxerId != 9999}">Weight: </span><span th:text="${displayPage[5].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[5].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[5].boxerId}" selected>only</option>
                                             </select>
@@ -130,7 +130,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[6].boxerId != 9999}">Height: </span><span th:text="${displayPage[6].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[6].boxerId != 9999}">Weight: </span><span th:text="${displayPage[6].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[6].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[6].boxerId}" selected>only</option>
                                             </select>
@@ -146,7 +146,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[7].boxerId != 9999}">Height: </span><span th:text="${displayPage[7].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[7].boxerId != 9999}">Weight: </span><span th:text="${displayPage[7].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[7].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[7].boxerId}" selected>only</option>
                                             </select>
@@ -162,7 +162,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[8].boxerId != 9999}">Height: </span><span th:text="${displayPage[8].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[8].boxerId != 9999}">Weight: </span><span th:text="${displayPage[8].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[8].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[8].boxerId}" selected>only</option>
                                             </select>
@@ -178,7 +178,7 @@
                                         <span class="fw-bold text-danger" th:if="${displayPage[9].boxerId != 9999}">Height: </span><span th:text="${displayPage[9].height}">height</span><br>
                                         <span class="fw-bold text-danger" th:if="${displayPage[9].boxerId != 9999}">Weight: </span><span th:text="${displayPage[9].weight}">weight</span><br>
 
-                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}">
+                                        <form method="post" action="tournament.html" th:action="@{/tournament}" th:object="${tournamentForm}" th:if="${displayPage[9].boxerId != 9999}">
                                             <select class="form-select" style="display:none;" th:field="*{boxer}">
                                                 <option value="1" th:value="${displayPage[9].boxerId}" selected>only</option>
                                             </select>
