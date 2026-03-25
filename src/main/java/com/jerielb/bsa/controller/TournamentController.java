@@ -2,7 +2,7 @@ package com.jerielb.bsa.controller;
 
 import com.jerielb.bsa.model.Boxer;
 import com.jerielb.bsa.model.TournamentForm;
-import com.jerielb.bsa.service.RosterService;
+import com.jerielb.bsa.service.TournamentService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +18,11 @@ import java.util.List;
 @Controller
 public class TournamentController {
 	private final Logger LOGGER = LogManager.getLogger(TournamentController.class);
-	private final RosterService ROSTER_SERVICE;
+	private final TournamentService TOURNAMENT_SERVICE;
 	
 	@Autowired
-	public TournamentController(RosterService ROSTER_SERVICE) {
-		this.ROSTER_SERVICE = ROSTER_SERVICE;
+	public TournamentController(TournamentService TOURNAMENT_SERVICE) {
+		this.TOURNAMENT_SERVICE = TOURNAMENT_SERVICE;
 	}
 	
 	@RequestMapping(path="/tournament_select_weight", method= RequestMethod.GET)
@@ -34,7 +34,7 @@ public class TournamentController {
 	@RequestMapping(path="/tournament_select_boxer", method= RequestMethod.POST)
 	public String getTournamentBoxerSelectionPage(@ModelAttribute("tournamentForm") TournamentForm form, Model model) {
 		System.out.println("DEBUG - weight class: " + form.getWeightClass());
-		List<Boxer> roster = ROSTER_SERVICE.getWeightClassBoxers(form.getWeightClass());
+		List<Boxer> roster = TOURNAMENT_SERVICE.getWeightClassBoxers(form.getWeightClass());
 		roster.forEach(System.out::println);
 
 		// displayPage - is for the ROSTER page limit of 8 boxers per slide
@@ -65,7 +65,7 @@ public class TournamentController {
 	
 	@RequestMapping(path="/tournament", method= RequestMethod.POST)
 	public String getTournamentPage(@ModelAttribute("tournamentForm") TournamentForm form, Model model) {
-		System.out.println("\n\tDEBUG - boxer selected: " + form.getBoxer());
+		System.out.println("\tDEBUG - boxer selected: " + form.getBoxer());
 		
 		return "tournament";
 	}
