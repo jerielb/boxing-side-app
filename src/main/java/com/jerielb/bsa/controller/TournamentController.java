@@ -1,6 +1,7 @@
 package com.jerielb.bsa.controller;
 
 import com.jerielb.bsa.model.Boxer;
+import com.jerielb.bsa.model.Matchup;
 import com.jerielb.bsa.model.TournamentForm;
 import com.jerielb.bsa.service.TournamentService;
 import org.apache.logging.log4j.LogManager;
@@ -33,9 +34,8 @@ public class TournamentController {
 	
 	@RequestMapping(path="/tournament_select_boxer", method= RequestMethod.POST)
 	public String getTournamentBoxerSelectionPage(@ModelAttribute("tournamentForm") TournamentForm form, Model model) {
-		System.out.println("DEBUG - weight class: " + form.getWeightClass());
+		LOGGER.debug("Weight class selected: " + form.getWeightClass());
 		List<Boxer> roster = TOURNAMENT_SERVICE.getWeightClassBoxers(form.getWeightClass());
-		roster.forEach(System.out::println);
 
 		// displayPage - is for the ROSTER page limit of 8 boxers per slide
 		List<Boxer> displayPage = new ArrayList<>();
@@ -65,8 +65,17 @@ public class TournamentController {
 	
 	@RequestMapping(path="/tournament", method= RequestMethod.POST)
 	public String getTournamentPage(@ModelAttribute("tournamentForm") TournamentForm form, Model model) {
-		System.out.println("\tDEBUG - boxer selected: " + form.getBoxer());
+		Boxer selected = form.getBoxer();
+		LOGGER.debug("Boxer selected: " + selected);
 		
+		List<Matchup> matchups;
+		if (selected.getWeightclass().equals("bantamweight")) {
+			// bantamweight does not have enough boxers
+			matchups = TOURNAMENT_SERVICE.setSemifinals(selected);
+		} else {
+			matchups = TOURNAMENT_SERVICE.setQuarterfinals(selected);
+		}
+		model.addAttribute("model", matchups);
 		return "tournament";
 	}
 }
