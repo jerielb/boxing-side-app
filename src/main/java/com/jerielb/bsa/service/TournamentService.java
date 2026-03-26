@@ -34,7 +34,7 @@ public class TournamentService {
 	
 	public List<Matchup> setQuarterfinals(Boxer boxer) {
 		// 16 boxers
-		List<Boxer> boxers = getBoxersTournamentBoxers(boxer.getWeightclass());
+		List<Boxer> boxers = getBoxersTournamentBoxers(boxer);
 		boxers.remove(boxer);
 		// get 15 random boxers
 		List<Boxer> tournamentRoster = getTournamentRoster(boxers, 15);
@@ -53,7 +53,7 @@ public class TournamentService {
 	
 	public List<Matchup> setSemifinals(Boxer boxer) {
 		// 8 boxers
-		List<Boxer> boxers = getBoxersTournamentBoxers(boxer.getWeightclass());		
+		List<Boxer> boxers = getBoxersTournamentBoxers(boxer);
 		boxers.remove(boxer);
 		// get 7 random boxers
 		List<Boxer> tournamentRoster = getTournamentRoster(boxers, 7);
@@ -80,51 +80,68 @@ public class TournamentService {
 //		return new Matchup(boxers.get(0), boxers.get(1));
 //	}
 	
-	public List<Boxer> getBoxersTournamentBoxers(String weightclass) {
+	public List<Boxer> getBoxersTournamentBoxers(Boxer boxer) {
 		List<String> input = new ArrayList<>();
+		List<String> boxerIds = new ArrayList<>();
 		List<Boxer> roster;
-		switch (weightclass) {
+		switch (boxer.getWeightclass()) {
 			case "bantamweight":
 				input.add("bantamweight");
 				input.add("featherweight");
 				input.add("lightweight");
-				roster = BOXER_REPOSITORY.findWeightClassesBoxers(input);
+				boxerIds.add("-1");
 				break;
 			case "featherweight":
 				input.add("featherweight");
 				input.add("lightweight");
 				input.add("welterweight");
-				roster = BOXER_REPOSITORY.findWeightClassesBoxers(input);
+				// remove duplicates
+				boxerIds.add("70"); // pacman (LW[90], WW[70])
+				boxerIds.add("75"); // duran (LW[94], WW[75])
 				break;
 			case "lightweight":
 				input.add("lightweight");
 				input.add("welterweight");
 				input.add("middleweight");
-				roster = BOXER_REPOSITORY.findWeightClassesBoxers(input);
+				// remove duplicates
+				boxerIds.add("70"); // pacman (LW[90], WW[70])
+				boxerIds.add("75"); // duran (LW[94], WW[75])
+				boxerIds.add("58"); // crawford (LW[99], MW[58])
+				boxerIds.add("57"); // hearns (WW[78], MW[57])
 				break;
 			case "welterweight":
 				input.add("welterweight");
 				input.add("middleweight");
 				input.add("light-heavyweight");
-				roster = BOXER_REPOSITORY.findWeightClassesBoxers(input);
+				// remove duplicates
+				boxerIds.add("57"); // hearns (WW[78], MW[57])
+				boxerIds.add("33"); // rjj (MW[53], LHW[33])
 				break;
 			case "middleweight":
 				input.add("middleweight");
 				input.add("light-heavyweight");
 				input.add("heavyweight");
-				roster = BOXER_REPOSITORY.findWeightClassesBoxers(input);
+				// remove duplicates
+				boxerIds.add("33"); // rjj (MW[53], LHW[33])
+				boxerIds.add("6"); // foreman (young[7], old[6])
 				break;
 			case "light-heavyweight":
 				input.add("light-heavyweight");
 				input.add("heavyweight");
-				roster = BOXER_REPOSITORY.findWeightClassesBoxers(input);
+				// remove duplicates
+				boxerIds.add("33"); // rjj (MW[53], LHW[33])
+				boxerIds.add("6"); // foreman (young[7], old[6])
 				break;
 			default:
 				input.add("heavyweight");
-				roster = BOXER_REPOSITORY.findWeightClassesBoxers(input);
+				if (boxer.getBoxerId() == 6) {
+					boxerIds.add("7"); // foreman (young[7], old[6])
+				} else {
+					boxerIds.add("6"); // foreman (young[7], old[6])
+				}
 				break;
 		}
-		return roster;
+		return BOXER_REPOSITORY.findWeightClassesBoxers(input, boxerIds);
 	}
 	
 	public List<Boxer> getTournamentRoster(List<Boxer> boxers, int count) {

@@ -24,6 +24,6 @@ public interface BoxerRepository extends JpaRepository<Boxer, Long> {
 	@Query(value = "select * from BOXER where ACTIVE = 'Y' and WEIGHTCLASS = ?1", nativeQuery = true)
 	List<Boxer> findWeightClassBoxers(String weightclass);
 	
-	@Query(value = "select * from BOXER where ACTIVE = 'Y' and WEIGHTCLASS in (:weights)", nativeQuery = true)
-	List<Boxer> findWeightClassesBoxers(@Param("weights") List<String> weights);
+	@Query(value = "select * from BOXER where ACTIVE = 'Y' and WEIGHTCLASS in (:weights) and BOXER_ID not in (:boxer_ids)", nativeQuery = true)
+	List<Boxer> findWeightClassesBoxers(@Param("weights") List<String> weights, @Param("boxer_ids") List<String> boxerIds);
 }
