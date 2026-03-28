@@ -75,7 +75,7 @@ public class TournamentController {
 		} else {
 			matchups = TOURNAMENT_SERVICE.setQuarterfinals(selected);
 		}
-		model.addAttribute("model", matchups);
+		model.addAttribute("matchups", matchups);
 		return "tournament";
 	}
 }
