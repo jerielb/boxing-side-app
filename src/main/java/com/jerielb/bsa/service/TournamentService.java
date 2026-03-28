@@ -113,27 +113,33 @@ public class TournamentService {
 				input.add("welterweight");
 				input.add("middleweight");
 				input.add("light-heavyweight");
-				// remove duplicates
+				// remove duplicates + creed
 				boxerIds.add("57"); // hearns (WW[78], MW[57])
 				boxerIds.add("33"); // rjj (MW[53], LHW[33])
+				boxerIds.add("25"); // creed (HW[36], LHW[25])
 				break;
 			case "middleweight":
 				input.add("middleweight");
 				input.add("light-heavyweight");
 				input.add("heavyweight");
-				// remove duplicates
+				// remove duplicates + creed
 				boxerIds.add("33"); // rjj (MW[53], LHW[33])
 				boxerIds.add("6"); // foreman (young[7], old[6])
+				boxerIds.add("36"); // creed (HW[36], LHW[25])
+				boxerIds.add("25"); // creed (HW[36], LHW[25])
 				break;
 			case "light-heavyweight":
 				input.add("light-heavyweight");
 				input.add("heavyweight");
-				// remove duplicates
-				boxerIds.add("33"); // rjj (MW[53], LHW[33])
+				// remove duplicates + creed
 				boxerIds.add("6"); // foreman (young[7], old[6])
+				boxerIds.add("36"); // creed (HW[36], LHW[25])
+				boxerIds.add("25"); // creed (HW[36], LHW[25])
 				break;
 			default:
 				input.add("heavyweight");
+				// remove duplicates + creed
+				boxerIds.add("36"); // creed (HW[36], LHW[25])
 				if (boxer.getBoxerId() == 6) {
 					boxerIds.add("7"); // foreman (young[7], old[6])
 				} else {
