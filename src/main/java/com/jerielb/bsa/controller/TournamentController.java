@@ -1,7 +1,6 @@
 package com.jerielb.bsa.controller;
 
 import com.jerielb.bsa.model.Boxer;
-import com.jerielb.bsa.model.Matchup;
 import com.jerielb.bsa.model.TournamentForm;
 import com.jerielb.bsa.service.TournamentService;
 import org.apache.logging.log4j.LogManager;

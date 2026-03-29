@@ -201,7 +201,7 @@ public class TournamentService {
 	}
 	
 	public List<Matchup> getFourMatchups() {
-		if (customRound == 0 || round == 1) {
+		if ((customRound == 0 && customBracket) || (round == 1 && !customBracket)) {
 			// set Matchup winners
 			for (int i=1; i<4; i++) {
 				fourMatchups.get(i).setWinner();
@@ -218,7 +218,7 @@ public class TournamentService {
 	}
 	
 	public List<Matchup> getTwoMatchups() {
-		if (customRound == 1 || round == 2) {
+		if ((customRound == 1 && customBracket) || (round == 2 && !customBracket)) {
 			// set Matchup winners
 			for (int i=1; i<2; i++) {
 				twoMatchups.get(i).setWinner();
