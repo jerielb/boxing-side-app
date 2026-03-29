@@ -26,7 +26,7 @@ public class RosterController {
 	}
 	
 	@RequestMapping(path="/roster_options", method= RequestMethod.GET)
-	public String getRosterPage(Model model) {
+	public String getRosterOptionsPage(Model model) {
 		model.addAttribute("rosterForm", new RosterForm());
 		return "roster_options";
 	}
@@ -73,11 +73,13 @@ public class RosterController {
 				displayPage = new ArrayList<>();
 			}
 		}
-		while (displayPage.size() < 10) {
-			Boxer dummy = new Boxer(9999);
-			displayPage.add(dummy);
+		if (!displayPage.isEmpty()) {
+			while (displayPage.size() < 10) {
+				Boxer dummy = new Boxer(9999);
+				displayPage.add(dummy);
+			}
+			displayPages.add(displayPage);
 		}
-		displayPages.add(displayPage);
 		
 		model.addAttribute("displayPages", displayPages);
 		

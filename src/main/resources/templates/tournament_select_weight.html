@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <title>Tournament Select</title>
+</head>
+<body style="height:90vh; background-image: url('/static/background.png'); background-repeat: no-repeat; background-size: cover;"
+      th:style="'background:url(' + @{/background.png} + '); background-repeat: no-repeat; background-size: cover;'">
+    <header class="mt-2 p-2">
+        <a href="index.html" th:href="@{/index}">
+            <img class="mx-auto d-block" style="width:80; height:80px;" src="/static/logo.png" th:src="@{/logo.png}" alt="logo"/>
+        </a>
+    </header>
+    <main class="p-3" style="height:85vh;">
+        <div class="mx-auto position-absolute top-50 start-50 translate-middle" style="width: 500px;">
+            <div class="d-grid gap-1">
+                <form method="post" action="tournament_select_boxer.html" th:action="@{/tournament_select_boxer}" th:object="${tournamentForm}">
+                    <div class="text-white fw-bold">Select Weight Class</div>
+                    <fieldset id="weightclass-tournament-selection" class="text-white">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="tournament-heavyweight" value="heavyweight" th:field="*{weightClass}" checked>
+                            <label class="form-check-label" for="tournament-heavyweight">
+                                Heavyweight
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="tournament-light-heavyweight" value="light-heavyweight" th:field="*{weightClass}">
+                            <label class="form-check-label" for="tournament-light-heavyweight">
+                                Light Heavyweight
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="tournament-middleweight" value="middleweight" th:field="*{weightClass}">
+                            <label class="form-check-label" for="tournament-middleweight">
+                                Middleweight
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="tournament-welterweight" value="welterweight" th:field="*{weightClass}">
+                            <label class="form-check-label" for="tournament-welterweight">
+                                Welterweight
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="tournament-lightweight" value="lightweight" th:field="*{weightClass}">
+                            <label class="form-check-label" for="tournament-lightweight">
+                                Lightweight
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="tournament-featherweight" value="featherweight" th:field="*{weightClass}">
+                            <label class="form-check-label" for="tournament-featherweight">
+                                Featherweight
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="tournament-bantamweight" value="bantamweight" th:field="*{weightClass}">
+                            <label class="form-check-label" for="tournament-bantamweight">
+                                Bantamweight
+                            </label>
+                        </div>
+                    </fieldset>
+                    <br>
+                    
+                    <input type="submit" value="Continue" class="btn btn-outline-light">
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
