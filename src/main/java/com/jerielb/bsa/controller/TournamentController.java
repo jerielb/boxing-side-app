@@ -72,10 +72,12 @@ public class TournamentController {
 		if (selected.getWeightclass().equals("bantamweight")) {
 			// bantamweight does not have enough boxers
 			matchups = TOURNAMENT_SERVICE.setSemifinals(selected);
+			model.addAttribute("matchups", matchups);
+			return "tournament_custom";
 		} else {
 			matchups = TOURNAMENT_SERVICE.setQuarterfinals(selected);
+			model.addAttribute("matchups", matchups);
+			return "tournament";
 		}
-		model.addAttribute("matchups", matchups);
-		return "tournament";
 	}
 }
