@@ -17,8 +17,9 @@ public class TournamentService {
 	private final Logger LOGGER = LogManager.getLogger(RosterService.class);
 	private final BoxerRepository BOXER_REPOSITORY;
 	
-	private static List<Matchup> quartersMatchups;
-	private static List<Matchup> semisMatchups;
+	private static List<Matchup> eightMatchups;
+	private static List<Matchup> fourMatchups;
+	private static List<Matchup> twoMatchups;
 	private static List<Matchup> finalsMatchups;
 	
 	@Autowired
@@ -32,7 +33,7 @@ public class TournamentService {
 		return boxers;
 	}
 	
-	public List<Matchup> setQuarterfinals(Boxer boxer) {
+	public List<Matchup> setEightMatchups(Boxer boxer) {
 		// 16 boxers
 		List<Boxer> boxers = getBoxersTournamentBoxers(boxer);
 		boxers.remove(boxer);
@@ -40,18 +41,31 @@ public class TournamentService {
 		List<Boxer> tournamentRoster = getTournamentRoster(boxers, 15);
 		
 		// matchups
-		quartersMatchups = new ArrayList<>();
+		eightMatchups = new ArrayList<>();
 		// selected boxer always advances
-		quartersMatchups.add(new Matchup(boxer, tournamentRoster.get(7), true));
+		eightMatchups.add(new Matchup(boxer, tournamentRoster.get(7), true));
 		for (int i = 0; i < 7; i++) {
-			quartersMatchups.add(new Matchup(tournamentRoster.get(i), tournamentRoster.get(15-1-i)));
+			eightMatchups.add(new Matchup(tournamentRoster.get(i), tournamentRoster.get(15-1-i)));
 		}
 		System.out.println("DEBUG - matchups:");
-		quartersMatchups.forEach(x -> System.out.printf("\t%s\n", x));
-		return quartersMatchups;
+		eightMatchups.forEach(x -> System.out.printf("\t%s\n", x));
+		
+		// dummy fill matchups - four; two; finals;
+		Boxer dummy = new Boxer(9999);
+		fourMatchups = new ArrayList<>();
+		twoMatchups = new ArrayList<>();
+		finalsMatchups = new ArrayList<>();
+		for (int i=0; i<4; i++) {
+			fourMatchups.add(new Matchup(dummy, dummy));
+			if (i<2) {
+				twoMatchups.add(new Matchup(dummy, dummy));
+				finalsMatchups.add(new Matchup(dummy, dummy));
+			}
+		}
+		return eightMatchups;
 	}
 	
-	public List<Matchup> setSemifinals(Boxer boxer) {
+	public List<Matchup> setFourMatchups(Boxer boxer) {
 		// 8 boxers
 		List<Boxer> boxers = getBoxersTournamentBoxers(boxer);
 		boxers.remove(boxer);
@@ -59,26 +73,25 @@ public class TournamentService {
 		List<Boxer> tournamentRoster = getTournamentRoster(boxers, 7);
 		
 		// matchups
-		semisMatchups = new ArrayList<>();
+		fourMatchups = new ArrayList<>();
 		// selected boxer always advances
-		semisMatchups.add(new Matchup(boxer, tournamentRoster.get(3), true));
+		fourMatchups.add(new Matchup(boxer, tournamentRoster.get(3), true));
 		for (int i = 0; i < 3; i++) {
-			semisMatchups.add(new Matchup(tournamentRoster.get(i), tournamentRoster.get(7-1-i)));
+			fourMatchups.add(new Matchup(tournamentRoster.get(i), tournamentRoster.get(7-1-i)));
 		}
 		System.out.println("DEBUG - matchups:");
-		semisMatchups.forEach(x -> System.out.printf("\t%s\n", x));
-		return semisMatchups;
+		fourMatchups.forEach(x -> System.out.printf("\t%s\n", x));
+		
+		// dummy fill matchups - two; finals;
+		Boxer dummy = new Boxer(9999);
+		twoMatchups = new ArrayList<>();
+		finalsMatchups = new ArrayList<>();
+		for (int i=0; i<2; i++) {
+			twoMatchups.add(new Matchup(dummy, dummy));
+			finalsMatchups.add(new Matchup(dummy, dummy));
+		}
+		return fourMatchups;
 	}
-
-//	public List<Matchup> getSemifinals(Boxer boxer) {
-//		// 4 boxers
-//		return null;
-//	}
-//	
-//	public Matchup getFinals(List<Boxer> boxers) {
-//		// 2 boxers
-//		return new Matchup(boxers.get(0), boxers.get(1));
-//	}
 	
 	public List<Boxer> getBoxersTournamentBoxers(Boxer boxer) {
 		List<String> input = new ArrayList<>();
@@ -153,5 +166,17 @@ public class TournamentService {
 	public List<Boxer> getTournamentRoster(List<Boxer> boxers, int count) {
 		Collections.shuffle(boxers);
 		return boxers.subList(0, count);
+	}
+	
+	public List<Matchup> getFourMatchups() {
+		return fourMatchups;
+	}
+	
+	public List<Matchup> getTwoMatchups() {
+		return twoMatchups;
+	}
+	
+	public List<Matchup> getFinalsMatchups() {
+		return finalsMatchups;
 	}
 }

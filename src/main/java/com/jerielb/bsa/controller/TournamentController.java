@@ -69,14 +69,26 @@ public class TournamentController {
 		LOGGER.debug("Boxer selected: " + selected);
 		
 		List<Matchup> matchups;
+		List<Matchup> matchups1;
+		List<Matchup> matchups2;
 		if (selected.getWeightclass().equals("bantamweight")) {
 			// bantamweight does not have enough boxers
-			matchups = TOURNAMENT_SERVICE.setSemifinals(selected);
+			matchups = TOURNAMENT_SERVICE.setFourMatchups(selected);
+			matchups1 = TOURNAMENT_SERVICE.getTwoMatchups();
+			matchups2 = TOURNAMENT_SERVICE.getFinalsMatchups();
 			model.addAttribute("matchups", matchups);
+			model.addAttribute("matchups1", matchups1);
+			model.addAttribute("matchups2", matchups2);
 			return "tournament_custom";
 		} else {
-			matchups = TOURNAMENT_SERVICE.setQuarterfinals(selected);
+			matchups = TOURNAMENT_SERVICE.setEightMatchups(selected);
+			matchups1 = TOURNAMENT_SERVICE.getFourMatchups();
+			matchups2 = TOURNAMENT_SERVICE.getTwoMatchups();
+			List<Matchup> matchups3 = TOURNAMENT_SERVICE.getFinalsMatchups();
 			model.addAttribute("matchups", matchups);
+			model.addAttribute("matchups1", matchups1);
+			model.addAttribute("matchups2", matchups2);
+			model.addAttribute("matchups3", matchups3);
 			return "tournament";
 		}
 	}
