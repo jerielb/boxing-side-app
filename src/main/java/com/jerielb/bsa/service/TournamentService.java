@@ -16,6 +16,10 @@ import java.util.List;
 public class TournamentService {
 	private final Logger LOGGER = LogManager.getLogger(RosterService.class);
 	private final BoxerRepository BOXER_REPOSITORY;
+	private static boolean customBracket = false; 
+	
+	private static int round = 0;
+	private static int customRound = 0;
 	
 	private static List<Matchup> eightMatchups;
 	private static List<Matchup> fourMatchups;
@@ -34,6 +38,9 @@ public class TournamentService {
 	}
 	
 	public List<Matchup> setEightMatchups(Boxer boxer) {
+		customBracket = false;
+		round = 0;
+		
 		// 16 boxers
 		List<Boxer> boxers = getBoxersTournamentBoxers(boxer);
 		boxers.remove(boxer);
@@ -66,6 +73,9 @@ public class TournamentService {
 	}
 	
 	public List<Matchup> setFourMatchups(Boxer boxer) {
+		customBracket = true;
+		customRound = 0;
+		
 		// 8 boxers
 		List<Boxer> boxers = getBoxersTournamentBoxers(boxer);
 		boxers.remove(boxer);
@@ -146,13 +156,13 @@ public class TournamentService {
 				input.add("heavyweight");
 				// remove duplicates + creed
 				boxerIds.add("6"); // foreman (young[7], old[6])
-				boxerIds.add("36"); // creed (HW[36], LHW[25])
-				boxerIds.add("25"); // creed (HW[36], LHW[25])
+				boxerIds.add("36"); // creed (HW[25], LHW[36])
+				boxerIds.add("25"); // creed (HW[25], LHW[36])
 				break;
 			default:
 				input.add("heavyweight");
 				// remove duplicates + creed
-				boxerIds.add("36"); // creed (HW[36], LHW[25])
+				boxerIds.add("25"); // creed (HW[25], LHW[36])
 				if (boxer.getBoxerId() == 6) {
 					boxerIds.add("7"); // foreman (young[7], old[6])
 				} else {
@@ -168,15 +178,67 @@ public class TournamentService {
 		return boxers.subList(0, count);
 	}
 	
+	public Boolean getCustomBracket() {
+		return  customBracket;
+	}
+	
+	public List<Matchup> getEightMatchups() {
+		if (round == 0) {
+			// set Matchup winners
+			for (int i=1; i<8; i++) {
+				eightMatchups.get(i).setWinner();
+			}
+			
+			// set next round Matchups
+			fourMatchups = new ArrayList<>();
+			// selected boxer always advances
+			fourMatchups.add(new Matchup(eightMatchups.get(0).getWinner(), eightMatchups.get(1).getWinner(), true));
+			for (int i = 2; i<7; i+=2) {
+				fourMatchups.add(new Matchup(eightMatchups.get(i).getWinner(), eightMatchups.get(i+1).getWinner()));
+			}
+		}
+		return eightMatchups;
+	}
+	
 	public List<Matchup> getFourMatchups() {
+		if (customRound == 0 || round == 1) {
+			// set Matchup winners
+			for (int i=1; i<4; i++) {
+				fourMatchups.get(i).setWinner();
+				System.out.println("DEBUG - winner: " + fourMatchups.get(i).getWinner());
+			}
+			
+			// set next round Matchups
+			twoMatchups = new ArrayList<>();
+			// selected boxer always advances
+			twoMatchups.add(new Matchup(fourMatchups.get(0).getWinner(), fourMatchups.get(1).getWinner(), true));
+			twoMatchups.add(new Matchup(fourMatchups.get(2).getWinner(), fourMatchups.get(3).getWinner()));
+		}
 		return fourMatchups;
 	}
 	
 	public List<Matchup> getTwoMatchups() {
+		if (customRound == 1 || round == 2) {
+			// set Matchup winners
+			for (int i=1; i<2; i++) {
+				twoMatchups.get(i).setWinner();
+				System.out.println("DEBUG - winner: " + twoMatchups.get(i).getWinner());
+			}
+			
+			// set next round Matchups
+			finalsMatchups = new ArrayList<>();
+			// selected boxer always advances
+			finalsMatchups.add(new Matchup(twoMatchups.get(0).getWinner(), twoMatchups.get(1).getWinner(), true));
+		}
 		return twoMatchups;
 	}
 	
 	public List<Matchup> getFinalsMatchups() {
 		return finalsMatchups;
+	}
+	
+	public void updateRound() {
+		round++;
+		customRound++;
 	}
 }

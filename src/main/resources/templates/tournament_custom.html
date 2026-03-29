@@ -98,8 +98,8 @@
                     <span class="row">#</span><span class="row">#</span>
                     <span class="row border" style="width:auto; height:50px;">
                         <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
-                             th:src="@{'/boxer/' + ${matchups2[0].boxer2.image} + '.png'}" alt=""/>
-                        <span class="col" th:text="${matchups2[0].boxer2.boxerFirstName} + ' ' + ${matchups2[0].boxer2.boxerLastName}">matchup3.0a</span>
+                             th:src="@{'/boxer/' + ${matchups2[0].boxer1.image} + '.png'}" alt=""/>
+                        <span class="col" th:text="${matchups2[0].boxer1.boxerFirstName} + ' ' + ${matchups2[0].boxer1.boxerLastName}">matchup3.0a</span>
                     </span>
                     
                     <span class="row">#</span><span class="row">#</span>
@@ -126,14 +126,14 @@
                     <span class="row">#</span>
 
                     <span class="row border" style="width:auto; height:50px;">
-                        <span class="col" th:text="${matchups1[0].boxer1.boxerFirstName} + ' ' + ${matchups1[0].boxer1.boxerLastName}">matchup2.1a</span>
+                        <span class="col" th:text="${matchups1[1].boxer1.boxerFirstName} + ' ' + ${matchups1[1].boxer1.boxerLastName}">matchup2.1a</span>
                         <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
-                             th:src="@{'/boxer/' + ${matchups1[0].boxer1.image} + '.png'}" alt=""/>
+                             th:src="@{'/boxer/' + ${matchups1[1].boxer1.image} + '.png'}" alt=""/>
                     </span>
                     <span class="row border" style="width:auto; height:50px;">
-                        <span class="col" th:text="${matchups1[0].boxer2.boxerFirstName} + ' ' + ${matchups1[0].boxer2.boxerLastName}">matchup2.1b</span>
+                        <span class="col" th:text="${matchups1[1].boxer2.boxerFirstName} + ' ' + ${matchups1[1].boxer2.boxerLastName}">matchup2.1b</span>
                         <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
-                             th:src="@{'/boxer/' + ${matchups1[0].boxer2.image} + '.png'}" alt=""/>
+                             th:src="@{'/boxer/' + ${matchups1[1].boxer2.image} + '.png'}" alt=""/>
                     </span>
 
                     <span class="row">#</span><span class="row">#</span>
@@ -184,6 +184,8 @@
                 <!-- SPACER -->
                 <div class="col border"></div>
             </div>
+
+            <a class="mt-2 btn btn-outline-light btn-sm" href="tournament.html" th:href="@{/tournament_next_round}">ADVANCE</a>
         </div>
     </main>
 

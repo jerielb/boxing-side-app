@@ -68,27 +68,36 @@ public class TournamentController {
 		Boxer selected = form.getBoxer();
 		LOGGER.debug("Boxer selected: " + selected);
 		
-		List<Matchup> matchups;
-		List<Matchup> matchups1;
-		List<Matchup> matchups2;
 		if (selected.getWeightclass().equals("bantamweight")) {
 			// bantamweight does not have enough boxers
-			matchups = TOURNAMENT_SERVICE.setFourMatchups(selected);
-			matchups1 = TOURNAMENT_SERVICE.getTwoMatchups();
-			matchups2 = TOURNAMENT_SERVICE.getFinalsMatchups();
-			model.addAttribute("matchups", matchups);
-			model.addAttribute("matchups1", matchups1);
-			model.addAttribute("matchups2", matchups2);
+			model.addAttribute("matchups", TOURNAMENT_SERVICE.setFourMatchups(selected));
+			model.addAttribute("matchups1", TOURNAMENT_SERVICE.getTwoMatchups());
+			model.addAttribute("matchups2", TOURNAMENT_SERVICE.getFinalsMatchups());
 			return "tournament_custom";
 		} else {
-			matchups = TOURNAMENT_SERVICE.setEightMatchups(selected);
-			matchups1 = TOURNAMENT_SERVICE.getFourMatchups();
-			matchups2 = TOURNAMENT_SERVICE.getTwoMatchups();
-			List<Matchup> matchups3 = TOURNAMENT_SERVICE.getFinalsMatchups();
-			model.addAttribute("matchups", matchups);
-			model.addAttribute("matchups1", matchups1);
-			model.addAttribute("matchups2", matchups2);
-			model.addAttribute("matchups3", matchups3);
+			model.addAttribute("matchups", TOURNAMENT_SERVICE.setEightMatchups(selected));
+			model.addAttribute("matchups1", TOURNAMENT_SERVICE.getFourMatchups());
+			model.addAttribute("matchups2", TOURNAMENT_SERVICE.getTwoMatchups());
+			model.addAttribute("matchups3", TOURNAMENT_SERVICE.getFinalsMatchups());
+			return "tournament";
+		}
+	}
+	
+	@RequestMapping(path="/tournament_next_round", method= RequestMethod.GET)
+	public String getTournamentPage(Model model) {
+		if (TOURNAMENT_SERVICE.getCustomBracket()) {
+			// bantamweight
+			model.addAttribute("matchups", TOURNAMENT_SERVICE.getFourMatchups());
+			model.addAttribute("matchups1", TOURNAMENT_SERVICE.getTwoMatchups());
+			model.addAttribute("matchups2", TOURNAMENT_SERVICE.getFinalsMatchups());
+			TOURNAMENT_SERVICE.updateRound();
+			return "tournament_custom";
+		} else {
+			model.addAttribute("matchups", TOURNAMENT_SERVICE.getEightMatchups());
+			model.addAttribute("matchups1", TOURNAMENT_SERVICE.getFourMatchups());
+			model.addAttribute("matchups2", TOURNAMENT_SERVICE.getTwoMatchups());
+			model.addAttribute("matchups3", TOURNAMENT_SERVICE.getFinalsMatchups());
+			TOURNAMENT_SERVICE.updateRound();
 			return "tournament";
 		}
 	}
