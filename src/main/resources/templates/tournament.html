@@ -17,11 +17,9 @@
 
         <div class="text-center row h-90 pt-3">
             <div id="carouselRosterDisplay" class="carousel slide">
-                <div class="row text-white" style="height:auto;">
-                    <div class="col spacer"></div>
+                <div class="row text-white">
+                    <!-- ROUND 1a -->
                     <div class="col border">
-                        <span class="row">QUARTER FINALS</span><hr>
-                        <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[0].boxer1.image} + '.png'}" alt=""/>
@@ -33,6 +31,7 @@
                             <span class="col" th:text="${matchups[0].boxer2.boxerFirstName} + ' ' + ${matchups[0].boxer2.boxerLastName}">matchup1.1b</span>
                         </span>
                         
+                        <span class="row">#</span>
                         <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
@@ -46,6 +45,7 @@
                         </span>
                         
                         <span class="row">#</span>
+                        <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[2].boxer1.image} + '.png'}" alt=""/>
@@ -58,6 +58,7 @@
                         </span>
                         
                         <span class="row">#</span>
+                        <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[3].boxer1.image} + '.png'}" alt=""/>
@@ -68,9 +69,10 @@
                                  th:src="@{'/boxer/' + ${matchups[3].boxer2.image} + '.png'}" alt=""/>
                             <span class="col" th:text="${matchups[3].boxer2.boxerFirstName} + ' ' + ${matchups[3].boxer2.boxerLastName}">matchup1.4b</span>
                         </span>
-                        <span class="row">#</span>
                     </div>
                     
+                    
+                    <!-- ROUND 2b -->
                     <div class="col border">
                         <span class="row">SEMI FINALS</span><hr>
                         <span class="row">#</span><span class="row">#</span>
@@ -85,7 +87,9 @@
                         <span class="row">#</span><span class="row">#</span>
                         <span class="row">#</span><span class="row">#</span>
                     </div>
-                    
+
+
+                    <!-- ROUND 3a -->
                     <div class="col border">
                         <span class="row">FINALS</span><hr>
                         <span class="row">#</span><span class="row">#</span>
@@ -99,7 +103,41 @@
                         <span class="row">#</span><span class="row">#</span>
                         <span class="row">#</span><span class="row">#</span>
                     </div>
-                    
+
+
+                    <!-- FINALS -->
+                    <div class="col border">
+                        <span class="row">FINALS</span><hr>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row border">matchup4.1a</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row border">matchup4.1b</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                    </div>
+
+
+                    <!-- ROUND 3b -->
+                    <div class="col border">
+                        <span class="row">FINALS</span><hr>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row border">matchup3.2a</span>
+                        <span class="row border">matchup3.2b</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                        <span class="row">#</span><span class="row">#</span>
+                    </div>
+
+
+                    <!-- ROUND 2b -->
                     <div class="col border">
                         <span class="row">SEMI FINALS</span><hr>
                         <span class="row">#</span><span class="row">#</span>
@@ -114,59 +152,60 @@
                         <span class="row">#</span><span class="row">#</span>
                         <span class="row">#</span><span class="row">#</span>
                     </div>
-                    
+
+
+                    <!-- ROUND 1b -->
                     <div class="col border">
-                        <span class="row">QUARTER FINALS</span><hr>
-                        <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[4].boxer1.boxerFirstName} + ' ' + ${matchups[4].boxer1.boxerLastName}">matchup1.5a</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[4].boxer1.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[4].boxer1.boxerFirstName} + ' ' + ${matchups[4].boxer1.boxerLastName}">matchup1.5a</span>
                         </span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[4].boxer2.boxerFirstName} + ' ' + ${matchups[4].boxer2.boxerLastName}">matchup1.5b</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[4].boxer2.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[4].boxer2.boxerFirstName} + ' ' + ${matchups[4].boxer2.boxerLastName}">matchup1.5b</span>
                         </span>
 
                         <span class="row">#</span>
+                        <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[5].boxer1.boxerFirstName} + ' ' + ${matchups[5].boxer1.boxerLastName}">matchup1.6a</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[5].boxer1.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[5].boxer1.boxerFirstName} + ' ' + ${matchups[5].boxer1.boxerLastName}">matchup1.6a</span>
                         </span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[5].boxer2.boxerFirstName} + ' ' + ${matchups[5].boxer2.boxerLastName}">matchup1.6b</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[5].boxer2.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[5].boxer2.boxerFirstName} + ' ' + ${matchups[5].boxer2.boxerLastName}">matchup1.6b</span>
                         </span>
 
                         <span class="row">#</span>
+                        <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[6].boxer1.boxerFirstName} + ' ' + ${matchups[6].boxer1.boxerLastName}">matchup1.7a</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[6].boxer1.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[6].boxer1.boxerFirstName} + ' ' + ${matchups[6].boxer1.boxerLastName}">matchup1.7a</span>
                         </span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[6].boxer2.boxerFirstName} + ' ' + ${matchups[6].boxer2.boxerLastName}">matchup1.7b</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[6].boxer2.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[6].boxer2.boxerFirstName} + ' ' + ${matchups[6].boxer2.boxerLastName}">matchup1.7b</span>
                         </span>
 
                         <span class="row">#</span>
+                        <span class="row">#</span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[7].boxer1.boxerFirstName} + ' ' + ${matchups[7].boxer1.boxerLastName}">matchup1.8a</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[7].boxer1.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[7].boxer1.boxerFirstName} + ' ' + ${matchups[7].boxer1.boxerLastName}">matchup1.8a</span>
                         </span>
                         <span class="row border" style="width:auto; height:50px;">
-                            <span class="col" th:text="${matchups[7].boxer2.boxerFirstName} + ' ' + ${matchups[7].boxer2.boxerLastName}">matchup1.8b</span>
                             <img class="col-1 p-0" style="width:auto; height:48px;" src="/static/boxer/_default_avatar.png"
                                  th:src="@{'/boxer/' + ${matchups[7].boxer2.image} + '.png'}" alt=""/>
+                            <span class="col" th:text="${matchups[7].boxer2.boxerFirstName} + ' ' + ${matchups[7].boxer2.boxerLastName}">matchup1.8b</span>
                         </span>
-                        <span class="row">#</span>
                     </div>
-                    <div class="col spacer"></div>
                 </div>
             </div>
         </div>
