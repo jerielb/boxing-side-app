@@ -5,7 +5,7 @@ BOXER_ID,BOXER_FIRST_NAME,BOXER_LAST_NAME,WEIGHTCLASS,RATING,HEIGHT,WEIGHT,FNC,F
 3,"Eddie","Chambers","heavyweight","79","6'1","209lbs","Y","N","N","Eddie_Chambers"
 4,"Evander","Holyfield","heavyweight","90","6'2","215lbs","Y","Y","Y","Evander_Holyfield"
 5,"Floyd","Patterson","heavyweight","90","6'0","195lbs","Y","Y","Y","Floyd_Patterson"
-6,"George","Foreman (Old)","heavyweight","84","6'3","250lbs","Y","Y","Y","George_Foreman-Old"
+6,"Old George","Foreman","heavyweight","84","6'3","250lbs","Y","Y","Y","George_Foreman-Old"
 7,"George","Foreman","heavyweight","85","6'3","224lbs","Y","Y","Y","George_Foreman"
 8,"Jack","Dempsey","heavyweight","87","6'1","189lbs","Y","Y","Y","Jack_Dempsey"
 9,"Jack","Johnson","heavyweight","90","6'1","208lbs","Y","Y","Y","Jack_Johnson"

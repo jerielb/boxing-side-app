@@ -37,14 +37,11 @@ public class Matchup {
 	}
 	
 	public Boxer getWinner() {
-		if (winner == null) {
-			this.winner = (Math.random() < 0.5) ? boxer1 : boxer2;
-		}
 		return winner;
 	}
 	
-	public void setWinner(Boxer winner) {
-		this.winner = winner;
+	public void setWinner() {
+		this.winner = (Math.random() < 0.5) ? boxer1 : boxer2;
 	}
 	
 	@Override
